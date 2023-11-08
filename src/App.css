@@ -52,7 +52,7 @@ button{
   background: transparent;
   margin-left: 5px;
   border-radius: 7px; 
-  transition: 0.6s;
+  transition: 1s ease-in-out;
 
 }
 
