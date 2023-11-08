@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 
 function Weather() {
+  const[toggled,setToggled]=useState(true)
   //console.log(process.env.REACT_APP_APIKEY);
   const ApiKey=process.env.REACT_APP_APIKEY
   const unit = "metric";
@@ -40,13 +41,30 @@ function Weather() {
   }
   return (
     <div className="App">
+    <div  onClick={()=>{setToggled(!toggled)
+              document.body.className=`${toggled?"body-light":""}`          
+                                
+            }} className={`theme-toggle${toggled?" night":""}`}>
+              <div className="sun-image">
+                  <div className="crator"></div>
+                  <div className="crator"></div>
+              </div>
+              <div className={`${toggled?"night":""}`}>
+                <div className="shape sm"></div>
+                <div className="shape sm"></div>
+                <div className="shape md"></div>
+                <div className="shape lg"></div>
+              </div>
+       
+            </div>
       <div className="center-div">
         <div className="top-div">
-          <h1>Weather Application</h1>
+          <h1 className={`top-heading${toggled?" night":""}`}>Weather Application</h1>
         </div>
-    <div className="input-div">
+    <div className={`input-div${toggled?" night":""}`}>
         <input
           type="text"
+          className={`city-input${toggled?" night":""}`}
           name="temp"
           placeholder="Search weather by city"
           value={cityName}
@@ -54,14 +72,14 @@ function Weather() {
             setCityName(e.target.value);
           }}
         />
-        <button onClick={callApi} className="search">
+        <button onClick={callApi} className={`search-button${toggled?" night":""}`}>
           Search
         </button>
         </div>
         {hourly && <p>Showing weather for the City : {weather.name}</p>}
         {hourly && (
-          <div className="main-div">
-            <div className="first">
+          <div className={`main-div${toggled?" night":""}`}>
+            <div className={`first${toggled?" night":""}`}>
               <div className="headers">
                 <h3>Current Weather</h3>
               </div>
@@ -72,7 +90,7 @@ function Weather() {
                 <p>Description : {weather?.weather?.[0]?.description}</p>
               </div>
             </div>
-            <div className="second">
+            <div className={`second${toggled?" night":""}`}>
               <div className="headers">
                 <h3>Air Condition</h3>
               </div>
@@ -85,7 +103,7 @@ function Weather() {
             </div>
           </div>
         )}
-        <div className="bottom-div">
+        <div className={`bottom-div${toggled?" night":""}`}>
           <h2>Digital Clock</h2>
           {timedata}
         </div>
