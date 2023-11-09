@@ -299,4 +299,7 @@
   .input-div button {
     margin-top: 10px;
   }
+  .main-div{
+    width: 94%;
+  }
 }
